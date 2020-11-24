@@ -8,7 +8,8 @@ using UnityEngine.Events;
 public class ButtonManager : MonoBehaviour
 {
     [SerializeField] private ClickableButton prefab = null;
-    [SerializeField] private GameObject restartButton = null;
+    [SerializeField] private GameObject restartButton = null;    
+    [SerializeField] private SplitViewer sv = null;
     public FloatEvent OnFinish;
     private List<ClickableButton> buttons = new List<ClickableButton>();
     private int currentID = 0;
@@ -45,7 +46,7 @@ public class ButtonManager : MonoBehaviour
         times.Clear();
         times.Add(Time.time);
         restartButton.gameObject.SetActive(false);
-
+        sv.gameObject.SetActive(false);
     }
 
     private void OnButtonClick(int i)
