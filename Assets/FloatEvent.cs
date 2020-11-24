@@ -6,4 +6,5 @@ using UnityEngine.Events;
 [System.Serializable]
 public class FloatEvent : UnityEvent<List<float>>
 {
+
 }

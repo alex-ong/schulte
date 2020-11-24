@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SplitViewer : MonoBehaviour
 {
-    [SerializeField] private BarManager bars;
+    [SerializeField] private BarManager bars = null;
 
     public void Show(List<float> times)
     {

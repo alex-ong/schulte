@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 public class BarManager : MonoBehaviour
 {
-    [SerializeField] private Split prefab;
+    [SerializeField] private Split prefab = null;
     private List<Split> splits = new List<Split>();
 
     public void Setup(List<float> times)

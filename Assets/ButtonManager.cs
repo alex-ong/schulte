@@ -10,7 +10,8 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] private ClickableButton prefab = null;
     [SerializeField] private GameObject restartButton = null;    
     [SerializeField] private SplitViewer sv = null;
-    public FloatEvent OnFinish;
+    public FloatEvent OnFinishSplits;
+
     private List<ClickableButton> buttons = new List<ClickableButton>();
     private int currentID = 0;
     private float startTime = 0.0f;
@@ -28,6 +29,7 @@ public class ButtonManager : MonoBehaviour
         {
             Destroy(button.gameObject);
         }
+        buttons.Clear();
 
         for (int i = 0; i < 25; i++)
         {
@@ -57,7 +59,7 @@ public class ButtonManager : MonoBehaviour
             times.Add(Time.time - startTime);
             if (currentID == 25)
             {
-                OnFinish?.Invoke(times);
+                OnFinishSplits?.Invoke(times);
                 restartButton.gameObject.SetActive(true);
             }
         }
