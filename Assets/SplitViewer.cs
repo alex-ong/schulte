@@ -5,25 +5,16 @@ using UnityEngine.UI;
 
 public class SplitViewer : MonoBehaviour
 {
-    [SerializeField] private Text t = null;
+    [SerializeField] private BarManager bars;
 
     public void Show(List<float> times)
     {
-        string t = "";
-        for (int i = 1; i < times.Count; i++)
-        {
-            t += (times[i]-times[i-1]).ToString("0.00") + " ";
-            if (i % 5 == 0)
-            {
-                t += "\n";
-            }
-        }
-        
-        this.t.text = t;
+        bars.gameObject.SetActive(true);
+        bars.Setup(times);
     }
 
     public void Hide()
     {
-        t.gameObject.SetActive(false);
+        bars.gameObject.SetActive(false);
     }
 }

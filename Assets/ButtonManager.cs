@@ -19,7 +19,7 @@ public class ButtonManager : MonoBehaviour
 
     public void Start()
     {
-        RandomizeAndInit();
+        
     }
 
     public void RandomizeAndInit()
@@ -44,7 +44,7 @@ public class ButtonManager : MonoBehaviour
         currentID = 0;
         startTime = Time.time;
         times.Clear();
-        times.Add(Time.time);
+        times.Add(0.0f);
         restartButton.gameObject.SetActive(false);
         sv.gameObject.SetActive(false);
     }

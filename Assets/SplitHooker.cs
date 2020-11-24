@@ -16,7 +16,6 @@ public class SplitHooker : MonoBehaviour, IPointerEnterHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("onmouseover");
         splitViewer.gameObject.SetActive(true);
         splitViewer.Show(this.times);
     }
