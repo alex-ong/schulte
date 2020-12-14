@@ -8,30 +8,43 @@ using System.Text;
 public class ScoreSaver : MonoBehaviour
 {
 
-    [SerializeField] public ButtonManager bm = null;
-
-
     public void SaveScore(List<float> results)
     {
-        List<string> data = new List<string>();
-        data.Add(DateTime.Now.ToString("yyyy-dd-MM_hhmmss"));
-
-        foreach (float f in results)
+        try
         {
-            data.Add(f.ToString("0.0000"));
-        }
+            List<string> data = new List<string>();
+            data.Add(DateTime.Now.ToString("yyyy-dd-MM_hhmmss"));
 
-        StringBuilder sb = new StringBuilder();
-        foreach (string s in data)
-        {
-            sb.Append(s);
-            sb.Append(",");
-        }
+            foreach (float f in results)
+            {
+                data.Add(f.ToString("0.0000"));
+            }
 
-        using (StreamWriter w = File.AppendText("C:/Schulte/Schulte.txt"))
+            StringBuilder sb = new StringBuilder();
+            foreach (string s in data)
+            {
+                sb.Append(s);
+                sb.Append(",");
+            }
+
+            Directory.CreateDirectory("C:/Schulte");
+            if (!File.Exists("C:/Schulte/Schulte.txt"))
+            {
+                File.WriteAllText("C:/Schulte/Schulte.txt", sb.ToString());
+            }
+            else
+            {
+                using (StreamWriter w = File.AppendText("C:/Schulte/Schulte.txt"))
+                {
+                    w.WriteLine(sb.ToString());
+                }
+            }
+        } 
+        catch (Exception e)
         {
-            w.WriteLine(sb.ToString());
+            Debug.Log(e.Message);
         }
+        
     }
 
 

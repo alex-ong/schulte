@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class SplitHooker : MonoBehaviour, IPointerEnterHandler
+public class SplitHooker : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private List<float> times = null;
     private SplitViewer splitViewer = null;
@@ -18,5 +18,10 @@ public class SplitHooker : MonoBehaviour, IPointerEnterHandler
     {
         splitViewer.gameObject.SetActive(true);
         splitViewer.Show(this.times);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        splitViewer.gameObject.SetActive(false);
     }
 }
