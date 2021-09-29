@@ -26,15 +26,15 @@ public class ScoreSaver : MonoBehaviour
                 sb.Append(s);
                 sb.Append(",");
             }
-
-            Directory.CreateDirectory("C:/Schulte");
-            if (!File.Exists("C:/Schulte/Schulte.txt"))
+            var output = Path.Combine(Application.streamingAssetsPath, "schulte.txt");
+            Directory.CreateDirectory(Application.streamingAssetsPath);
+            if (!File.Exists(output))
             {
-                File.WriteAllText("C:/Schulte/Schulte.txt", sb.ToString());
+                File.WriteAllText(output, sb.ToString());
             }
             else
             {
-                using (StreamWriter w = File.AppendText("C:/Schulte/Schulte.txt"))
+                using (StreamWriter w = File.AppendText(output))
                 {
                     w.WriteLine(sb.ToString());
                 }
